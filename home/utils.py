@@ -1,9 +1,9 @@
 from datetime import datetime
-from .models import DailyOperationsHours
+from .models import DailyOperatingHours
 def get_today_operating_hours():
     today=datetime.today().strftime("%A")
     try:
-        hours=DailyOperationsHours.objects.get(day=today)
+        hours=DailyOperatingHours.objects.get(day=today)
         return hours.open_time,hours.close_time
-    expcet DailyOperationsHours.DoesNotExist:
+    except DailyOperatingHours.DoesNotExist:
         return None, None
