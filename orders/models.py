@@ -5,6 +5,7 @@ class OrderStatus(models.Model):
     def __str__(self):
         return self.name
 class Order(models.Model):
+    user=models.ForeignKey(User,on_delete=mode.CASCADE,related_name="orders")
     customer_name=models.CharField(max_length=100)
     total_amount=models.DecimalField(max_digits=10,decimal_places=2)
     status=models.ForeignKey(OrderStatus,ondelete=models.SET_NULL,null=True)
